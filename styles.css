@@ -53,6 +53,12 @@ main {
 .list h1 {
     font-size: 22px;
     padding: 5px;
+
+    /* unselectable */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none;
 }
 
 .listHeader {
@@ -78,6 +84,11 @@ main {
     padding: 15px;
     margin-top: 20px;
     font-size: 0.9em;
+
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    transition: opacity 0.5s;
 }
 
 .card .title {
