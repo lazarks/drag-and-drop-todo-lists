@@ -12,6 +12,7 @@
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </head>
     <body>
         <div class="container">
@@ -23,7 +24,9 @@
                 <div class="list">
                     <div class="listHeader">
                         <h1>TODO</h1>
-                        <button class="addTaskButton" type="button">+</button>
+                        <button class="addTaskButton" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 1</div>
@@ -31,55 +34,89 @@
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quia, nostrum iure
                             consectetur voluptas dignissimos nulla a delectus nemo autem.
                         </div>
-                        <button class="editButton" type="button">Edit</i></button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 2</div>
                         <div class="description">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, quia.
                         </div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 3</div>
                         <div class="description">Lorem ipsum dolor sit amet.</div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                
+
                 <!-- In Progress -->
                 <div class="list">
                     <div class="listHeader">
                         <h1>In Progress</h1>
-                        <button class="addTaskButton" type="button">+</button>
+                        <button class="addTaskButton" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 4</div>
                         <div class="description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, aperiam.
                         </div>
-                        <button class="editButton" type="button">Edit</i></button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 5</div>
                         <div class="description">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quia, nostrum iure
-                                consectetur voluptas dignissimos nulla a delectus nemo autem.
+                            consectetur voluptas dignissimos nulla a delectus nemo autem.
                         </div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-    
+
                 <!-- In Review -->
                 <div class="list">
                     <div class="listHeader">
                         <h1>In Review</h1>
-                        <button class="addTaskButton" type="button">+</button>
+                        <button class="addTaskButton" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 6</div>
@@ -87,8 +124,14 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis ipsa assumenda corrupti
                             ratione earum ab!
                         </div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 7</div>
@@ -96,16 +139,24 @@
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quia, nostrum iure
                             consectetur voluptas dignissimos nulla a delectus nemo autem.
                         </div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-    
+
                 <!-- Done -->
                 <div class="list">
                     <div class="listHeader">
                         <h1>Done</h1>
-                        <button class="addTaskButton" type="button">+</button>
+                        <button class="addTaskButton" type="button">
+                            <i class="material-icons">add</i>
+                        </button>
                     </div>
                     <div class="card" draggable="true">
                         <div class="title">Task 6</div>
@@ -113,13 +164,19 @@
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quia, nostrum iure
                             consectetur voluptas dignissimos nulla a delectus nemo autem.
                         </div>
-                        <button class="editButton" type="button">Edit</button>
-                        <button class="deleteButton" type="button">Remove</button>
+                        <div class="buttons">
+                            <button class="editButton" type="button">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button class="deleteButton" type="button">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </main>
         </div>
-        
+
         <script src="script.js"></script>
     </body>
 </html>

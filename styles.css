@@ -13,11 +13,11 @@ body {
 .container {
     width: 90%;
     margin: 0 auto;
-    background-color: rgba(187, 187, 187, 0.39); /* temp */
 }
 
 header {
     height: 10vh;
+    min-height: fit-content;
     padding-top: 20px;
 
     /* unselectable */
@@ -44,6 +44,7 @@ main {
 
 .list {
     width: 20%;
+    min-width: 200px;
     height: fit-content;
     max-height: 600px;
     overflow: auto;
@@ -70,17 +71,18 @@ main {
 }
 
 .listHeader .addTaskButton {
-    width: 50px;
-    color: #f1f1f1;
+    background: transparent;
+    color: #555;
+    max-height: 37px;
     border: none;
     border-radius: 5px;
     padding: 5px;
-    background-color: #555;
-    font-size: larger;
-    font-weight: bold;
     cursor: pointer;
 }
 
+.addTaskButton i {
+    font-size: 24px;
+}
 .card {
     background-color: #f1f1f1;
     box-shadow: 2px 2px 5px #555;
@@ -105,23 +107,28 @@ main {
     margin-bottom: 10px;
 }
 
-.card button {
-    width: fit-content;
-    min-width: 40px;
-    padding: 8px;
-    margin: 10px 10px 0 0;
+.card .buttons {
+    text-align: right;
+    margin-top: 20px;
+    padding: 5px;
+}
+.card .buttons button {
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    color: #f1f1f1;
+    margin-left: 10px;
     cursor: pointer;
 }
 
-.card .editButton {
-    background-color: rgb(226, 155, 0);
+i {
+    pointer-events: none;
 }
 
-.card .deleteButton {
-    background-color: rgb(201, 40, 0);
+.deleteButton i {
+    color: rgb(212, 62, 2);
+}
+
+.editButton i {
+    color: rgb(255, 168, 37);
 }
 
 button:hover {

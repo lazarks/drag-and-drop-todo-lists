@@ -50,9 +50,14 @@ lists.forEach((list) => {
                 <div class="description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 </div>
-                <button class="editButton" type="button">Edit</button>
-                <button class="deleteButton" type="button">Remove</button>
-                `;
+                <div class="buttons">
+                    <button class="editButton" type="button">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button class="deleteButton" type="button">
+                       <i class="material-icons">delete</i>
+                    </button>
+                </div>`;
                 list.appendChild(newTask);
                 console.log(`created task: ${newTitle}, in list: ${list.querySelector("h1").innerText}`);
                 initEvents(list);
@@ -63,13 +68,13 @@ lists.forEach((list) => {
 
         if (event.target.classList.contains("deleteButton")) {
             let button = event.target;
-            console.log("deleted card: " + button.parentNode.querySelector(".title").innerText);
-            let card = button.parentNode;
+            console.log("deleted card: " + button.parentNode.parentNode.querySelector(".title").innerText);
+            let card = button.parentNode.parentNode;
             card.remove();
         }
 
         if (event.target.classList.contains("editButton")) {
-            let titleElement = event.target.parentNode.querySelector(".title");
+            let titleElement = event.target.parentNode.parentNode.querySelector(".title");
             let title = titleElement.innerText;
 
             let newTitle = prompt("Edit title?", title);
