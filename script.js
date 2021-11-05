@@ -50,7 +50,7 @@ lists.forEach((list) => {
                 <div class="description">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 </div>
-                <div class="buttons">
+                <div class="card-buttons">
                     <button class="editButton" type="button">
                         <i class="material-icons">edit</i>
                     </button>

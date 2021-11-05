@@ -1,3 +1,4 @@
+@import url("css/buttons.css");
 * {
     margin: 0;
     padding: 0;
@@ -70,19 +71,6 @@ main {
     justify-content: space-between;
 }
 
-.listHeader .addTaskButton {
-    background: transparent;
-    color: #555;
-    max-height: 37px;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.addTaskButton i {
-    font-size: 24px;
-}
 .card {
     background-color: #f1f1f1;
     box-shadow: 2px 2px 5px #555;
@@ -105,34 +93,6 @@ main {
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.card .buttons {
-    text-align: right;
-    margin-top: 20px;
-    padding: 5px;
-}
-.card .buttons button {
-    background: transparent;
-    border: none;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-i {
-    pointer-events: none;
-}
-
-.deleteButton i {
-    color: rgb(212, 62, 2);
-}
-
-.editButton i {
-    color: rgb(255, 168, 37);
-}
-
-button:hover {
-    opacity: 0.55;
 }
 
 .card.dragging {

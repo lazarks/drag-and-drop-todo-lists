@@ -1,0 +1,38 @@
+button {
+    background: transparent;
+    max-height: 37px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+i {
+    pointer-events: none;
+}
+
+.addTaskButton {
+    color: #555;
+}
+
+.card-buttons {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.card-buttons button {
+    margin-left: 10px;
+}
+
+.deleteButton i {
+    color: rgb(212, 62, 2);
+}
+
+.editButton i {
+    color: rgb(255, 168, 37);
+}
+
+button:hover {
+    transform: scale(1.5);
+}
