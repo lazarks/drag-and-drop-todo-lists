@@ -17,7 +17,6 @@ body {
 }
 
 header {
-    height: 10vh;
     min-height: fit-content;
     padding-top: 20px;
 
@@ -36,7 +35,6 @@ header h1 {
 
 main {
     padding: 20px;
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -109,6 +107,8 @@ main {
 
 @media screen and (max-width: 620px) {
     header h1 {
+        margin: 0 auto;
+        width: 400px;
         letter-spacing: 2px;
     }
     .container {

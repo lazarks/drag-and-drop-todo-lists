@@ -26,6 +26,29 @@ function registerEventsOnCard(card) {
     });
 }
 
+let counter = 1;
+lists.forEach((list) => {
+    let task = document.createElement("div");
+    task.classList.add("card");
+    task.draggable = true;
+    task.innerHTML = `
+    <div class="title">Dynamic Task ${counter++}</div>
+    <div class="description">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    </div>
+    <div class="card-buttons">
+        <button class="editButton" type="button">
+            <i class="material-icons">edit</i>
+        </button>
+        <button class="deleteButton" type="button">
+            <i class="material-icons">delete</i>
+        </button>
+    </div>
+    `;
+    list.appendChild(task);
+    initEvents(list);
+});
+
 lists.forEach((list) => {
     list.addEventListener("dragover", (event) => {
         event.preventDefault();
