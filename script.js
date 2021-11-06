@@ -2,34 +2,36 @@ function initCardEvents() {
     let lists = document.querySelectorAll(".list");
     lists.forEach((list) => {
         let card = list.querySelectorAll(".card");
-        card.forEach((card) => {
-            card.addEventListener("dragstart", () => {
-                card.classList.add("dragging");
-                if (card) {
-                    console.log(
-                        `dragstart: { card: ${card.querySelector(".title").innerText} from list: ${
-                            card.parentNode.querySelector("h1").innerText
-                        } }`
-                    );
-                }
-                // save();
-            });
-            card.addEventListener("dragend", (e) => {
-                card.classList.remove("dragging");
-                console.log(
-                    `dragend: { card: ${card.querySelector(".title").innerText} to list: ${
-                        card.parentNode.querySelector("h1").innerText
-                    } }`
-                );
-                save();
-            });
-        });
+        card.forEach((card) => addCardEvents(card));
+    });
+}
+
+function addCardEvents(card) {
+    card.addEventListener("dragstart", () => {
+        card.classList.add("dragging");
+        if (card) {
+            console.log(
+                `dragstart: { card: ${card.querySelector(".title").innerText} from list: ${
+                    card.parentNode.querySelector("h1").innerText
+                } }`
+            );
+        }
+    });
+    card.addEventListener("dragend", (e) => {
+        card.classList.remove("dragging");
+        console.log(
+            `dragend: { card: ${card.querySelector(".title").innerText} to list: ${
+                card.parentNode.querySelector("h1").innerText
+            } }`
+        );
+        save();
     });
 }
 
 function initListEvents() {
     let lists = document.querySelectorAll(".list");
     lists.forEach((list) => {
+        // d&d
         list.addEventListener("dragover", (event) => {
             event.preventDefault();
             let draggingCard = document.querySelector(".dragging");
@@ -41,6 +43,7 @@ function initListEvents() {
             }
         });
 
+        // create new card
         list.addEventListener("click", (event) => {
             if (event.target.classList.contains("addTaskButton")) {
                 let newTitle = prompt("title: ? ", "tiiiitle");
@@ -70,6 +73,7 @@ function initListEvents() {
                 }
             }
 
+            // delete card
             if (event.target.classList.contains("deleteButton")) {
                 let button = event.target;
                 console.log("deleted card: " + button.parentNode.parentNode.querySelector(".title").innerText);
@@ -78,6 +82,7 @@ function initListEvents() {
                 save();
             }
 
+            // edit card
             if (event.target.classList.contains("editButton")) {
                 let titleElement = event.target.parentNode.parentNode.querySelector(".title");
                 let title = titleElement.innerText;
@@ -110,6 +115,7 @@ function getCardAfterDraggingCard(list, yDraggingCard) {
     ).element;
 }
 
+// saving lists to localstorage
 function save() {
     let lists = document.querySelectorAll(".list");
     lists.forEach((list) => {
@@ -119,6 +125,7 @@ function save() {
     });
 }
 
+// init lists
 function fillList() {
     let lists = document.querySelectorAll(".list");
     lists.forEach((list) => {
@@ -128,7 +135,7 @@ function fillList() {
             list.outerHTML = localStorage.getItem(listName);
         }
     });
+    initCardEvents();
+    initListEvents();
 }
 fillList();
-initCardEvents();
-initListEvents();
