@@ -60,6 +60,24 @@
                     </div>
                 </div>
             </main>
+            <div class="popup" tabindex="0">
+                <div class="popup-form">
+                    <label class="input-field">
+                        <input type="text" id="titleInput" placeholder="&nbsp" />
+                        <span class="placeholder">Title</span>
+                    </label>
+                    <label class="input-field desc">
+                        <input type="text" id="descriptionInput" placeholder="&nbsp" />
+                        <span class="placeholder">Description</span>
+                    </label>
+                    <div class="popup-buttons">
+                        <button id="cancel" onclick="togglePopup()">cancel</button>
+                        <button id="save">save</button>
+                        <!-- <button id="create">create</button> -->
+                    </div>
+                    <button id="close" onclick="togglePopup()">x</button>
+                </div>
+            </div>
         </div>
 
         <script src="script.js"></script>

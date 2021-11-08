@@ -31,7 +31,7 @@ function addCardEvents(card) {
 function initListEvents() {
     let lists = document.querySelectorAll(".list");
     lists.forEach((list) => {
-        // d&d
+        // drag place
         list.addEventListener("dragover", (event) => {
             event.preventDefault();
             let draggingCard = document.querySelector(".dragging");
@@ -43,34 +43,11 @@ function initListEvents() {
             }
         });
 
-        // create new card
         list.addEventListener("click", (event) => {
+            // create new card
             if (event.target.classList.contains("addTaskButton")) {
-                let newTitle = prompt("title: ? ", "tiiiitle");
-                if (newTitle) {
-                    let newTask = document.createElement("div");
-                    newTask.classList.add("card");
-                    newTask.draggable = true;
-                    newTask.innerHTML = `
-                        <div class="title">${newTitle}</div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        </div>
-                        <div class="card-buttons">
-                            <button class="editButton" type="button">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button class="deleteButton" type="button">
-                               <i class="material-icons">delete</i>
-                            </button>
-                        </div>`;
-                    list.appendChild(newTask);
-                    initCardEvents();
-                    save();
-                    console.log(`created task: ${newTitle}, in list: ${list.querySelector("h1").innerText}`);
-                } else {
-                    return false;
-                }
+                addCard(list);
+                save();
             }
 
             // delete card
@@ -84,14 +61,8 @@ function initListEvents() {
 
             // edit card
             if (event.target.classList.contains("editButton")) {
-                let titleElement = event.target.parentNode.parentNode.querySelector(".title");
-                let title = titleElement.innerText;
-
-                let newTitle = prompt("Edit title?", title);
-                if (newTitle) {
-                    titleElement.innerText = newTitle;
-                    console.log(`edited card: ${title}, new title: ${newTitle}`);
-                }
+                let card = event.target.parentNode.parentNode;
+                editCard(card);
                 save();
             }
         });
@@ -115,6 +86,7 @@ function getCardAfterDraggingCard(list, yDraggingCard) {
     ).element;
 }
 
+// STORAGE
 // saving lists to localstorage
 function save() {
     let lists = document.querySelectorAll(".list");
@@ -139,3 +111,64 @@ function fillList() {
     initListEvents();
 }
 fillList();
+
+// POPUP
+let popup = document.querySelector(".popup");
+function togglePopup() {
+    popup.classList.toggle("active");
+    if (popup.classList.contains("active")) {
+        popup.focus();
+    } // test
+}
+
+function addCard(list) {
+    togglePopup();
+    ["click", "keypress"].forEach((e) => {
+        popup.addEventListener(e, function createCardHandler(event) {
+            if (event.target.innerText === "save" || event.key === "Enter") {
+                let newTitle = popup.querySelector("#titleInput").value;
+                let newDescription = popup.querySelector("#descriptionInput").value;
+                let card = document.createElement("div");
+                card.classList.add("card");
+                card.draggable = true;
+                card.innerHTML = `
+            <div class="title">${newTitle}</div>
+            <div class="description">${newDescription}</div>
+            <div class="card-buttons">
+                <button class="editButton" type="button">
+                    <i class="material-icons">edit</i>
+                </button>
+                <button class="deleteButton" type="button">
+                    <i class="material-icons">delete</i>
+                </button>
+            </div>`;
+                list.appendChild(card);
+                initCardEvents();
+                console.log(`created card: ${newTitle}, in list: ${list.querySelector("h1").innerText}`);
+                togglePopup();
+                popup.removeEventListener(e, createCardHandler);
+            }
+        });
+    });
+}
+
+function editCard(card) {
+    togglePopup();
+    ["click", "keypress"].forEach((e) => {
+        popup.addEventListener(e, function editCardHandler(event) {
+            if (event.target.innerText === "save" || event.key === "Enter") {
+                let newTitle = popup.querySelector("#titleInput").value;
+                let newDescription = popup.querySelector("#descriptionInput").value;
+                card.querySelector(".title").innerText = newTitle;
+                card.querySelector(".description").innerText = newDescription;
+                console.log(`edited card: ${newTitle}`);
+                togglePopup();
+                popup.removeEventListener(e, editCardHandler);
+            }
+        });
+    });
+}
+
+// works
+// but need refactoring
+// a lot

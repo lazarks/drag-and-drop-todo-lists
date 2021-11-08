@@ -1,0 +1,123 @@
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2c2c2c80;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+.popup.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-form {
+    background-color: #fafafa;
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    padding: 20px 30px 0;
+    position: relative;
+}
+.popup form {
+    background-color: blue;
+}
+
+.input-field {
+    position: relative;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    --field-padding: 12px;
+    width: fit-content;
+}
+
+.input-field input {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
+        linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
+        linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+    transition: background-size 0.3s ease;
+    padding: var(--field-padding);
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 250px;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-field.desc input {
+    width: 400px;
+}
+
+.input-field .placeholder {
+    position: absolute;
+    left: var(--field-padding);
+    width: calc(100% - (var(--field-padding) * 2));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 22px;
+    line-height: 100%;
+    transform: translateY(-50%);
+    color: #808080;
+    transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    font-size: 16px;
+}
+
+.input-field input.dirty + .placeholder,
+.input-field input:focus + .placeholder,
+.input-field input:not(:placeholder-shown) + .placeholder {
+    top: -10px;
+    font-size: 14px;
+    color: #222;
+}
+
+.input-field input.dirty,
+.input-field input:not(:placeholder-shown),
+.input-field input:focus {
+    background-size: 100% 0.15em, 100% 0.1em, 100%;
+}
+
+.popup-buttons {
+    padding: 20px;
+    text-align: right;
+}
+
+.popup-buttons > button {
+    margin-left: 20px;
+    border: none;
+    background: transparent;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#close {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* #create.hidden,
+#save.hidden {
+    display: none;
+} */
