@@ -47,7 +47,6 @@ function initListEvents() {
             // create new card
             if (event.target.classList.contains("addTaskButton")) {
                 addCard(list);
-                save();
             }
 
             // delete card
@@ -63,7 +62,6 @@ function initListEvents() {
             if (event.target.classList.contains("editButton")) {
                 let card = event.target.parentNode.parentNode;
                 editCard(card);
-                save();
             }
         });
     });
@@ -85,32 +83,6 @@ function getCardAfterDraggingCard(list, yDraggingCard) {
         { offset: Number.NEGATIVE_INFINITY }
     ).element;
 }
-
-// STORAGE
-// saving lists to localstorage
-function save() {
-    let lists = document.querySelectorAll(".list");
-    lists.forEach((list) => {
-        let listName = list.classList[0];
-        let listHTML = list.outerHTML;
-        localStorage.setItem(listName, listHTML);
-    });
-}
-
-// init lists
-function fillList() {
-    let lists = document.querySelectorAll(".list");
-    lists.forEach((list) => {
-        let listName = list.classList[0];
-        let storage = localStorage.getItem(listName);
-        if (storage) {
-            list.outerHTML = localStorage.getItem(listName);
-        }
-    });
-    initCardEvents();
-    initListEvents();
-}
-fillList();
 
 // POPUP
 let popup = document.querySelector(".popup");
@@ -146,6 +118,7 @@ function addCard(list) {
                 initCardEvents();
                 console.log(`created card: ${newTitle}, in list: ${list.querySelector("h1").innerText}`);
                 togglePopup();
+                save();
                 popup.removeEventListener(e, createCardHandler);
             }
         });
@@ -163,12 +136,35 @@ function editCard(card) {
                 card.querySelector(".description").innerText = newDescription;
                 console.log(`edited card: ${newTitle}`);
                 togglePopup();
+                save();
                 popup.removeEventListener(e, editCardHandler);
             }
         });
     });
 }
 
-// works
-// but need refactoring
-// a lot
+// STORAGE
+// saving lists to localstorage
+function save() {
+    let lists = document.querySelectorAll(".list");
+    lists.forEach((list) => {
+        let listName = list.classList[0];
+        let listHTML = list.outerHTML;
+        localStorage.setItem(listName, listHTML);
+    });
+}
+
+// init lists
+function fillList() {
+    let lists = document.querySelectorAll(".list");
+    lists.forEach((list) => {
+        let listName = list.classList[0];
+        let storage = localStorage.getItem(listName);
+        if (storage) {
+            list.outerHTML = localStorage.getItem(listName);
+        }
+    });
+    initCardEvents();
+    initListEvents();
+}
+fillList();
