@@ -36,14 +36,16 @@ function initListEvents() {
             // create new card
             if (event.target.classList.contains("addTaskButton")) {
                 addCard(list);
-            } // delete card
+            }
+            // delete card
             else if (event.target.classList.contains("deleteButton")) {
                 let button = event.target;
                 console.log("deleted card: " + button.parentNode.parentNode.querySelector(".title").innerText);
                 let card = button.parentNode.parentNode;
                 card.remove();
                 save();
-            } // edit card
+            }
+            // edit card
             else if (event.target.classList.contains("editButton")) {
                 let card = event.target.parentNode.parentNode;
                 editCard(card);
@@ -79,92 +81,6 @@ function getCardAfterDraggingCard(list, yDraggingCard) {
         },
         { offset: Number.NEGATIVE_INFINITY }
     ).element;
-}
-
-// POPUP
-let popup = document.querySelector(".popup");
-let titleInput = popup.querySelector("#titleInput");
-let descriptionInput = popup.querySelector("#descriptionInput");
-
-popup.addEventListener("keydown", (e) => {
-    if (e.key == "Enter") {
-        popup.querySelector("#save").click();
-    }
-    if (e.key == "Escape") {
-        popup.querySelector("#cancel").click();
-    }
-});
-popup.addEventListener("click", (e) => {
-    if (e.target.getAttribute("id") == "close") {
-        popup.querySelector("#cancel").click();
-    }
-});
-
-function togglePopup() {
-    popup.classList.toggle("active");
-    if (popup.classList.contains("active")) {
-        popup.focus();
-    }
-}
-
-function addCard(list) {
-    if (list != null) {
-        // clear input fields
-        titleInput.value = "";
-        descriptionInput.value = "";
-        togglePopup();
-
-        popup.addEventListener("click", function createCardHandler(event) {
-            if (event.target.innerText === "save") {
-                let card = document.createElement("div");
-                card.classList.add("card");
-                card.draggable = true;
-                card.innerHTML = `
-                <div class="title">${titleInput.value}</div>
-                <div class="description">${descriptionInput.value}</div>
-                <div class="card-buttons">
-                    <button class="editButton" type="button">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button class="deleteButton" type="button">
-                        <i class="material-icons">delete</i>
-                    </button>
-                </div>`;
-                list.appendChild(card);
-                initCardEvents();
-                console.log(`created card: ${titleInput.value}, in list: ${list.querySelector("h1").innerText}`);
-                togglePopup();
-                popup.removeEventListener("click", createCardHandler);
-                save();
-            } else if (event.target.innerText === "cancel") {
-                togglePopup();
-                popup.removeEventListener("click", createCardHandler);
-            }
-        });
-    }
-}
-
-function editCard(card) {
-    titleInput.value = card.querySelector(".title").innerText;
-    descriptionInput.value = card.querySelector(".description").innerText;
-    togglePopup();
-
-    popup.addEventListener("click", function editCardHandler(event) {
-        if (event.target.innerText === "save") {
-            let newTitle = popup.querySelector("#titleInput").value;
-            let newDescription = popup.querySelector("#descriptionInput").value;
-            card.querySelector(".title").innerText = newTitle;
-            card.querySelector(".description").innerText = newDescription;
-            initCardEvents();
-            console.log(`edited card: ${newTitle}`);
-            togglePopup();
-            popup.removeEventListener("click", editCardHandler);
-            save();
-        } else if (event.target.innerText === "cancel") {
-            togglePopup();
-            popup.removeEventListener("click", editCardHandler);
-        }
-    });
 }
 
 // STORAGE

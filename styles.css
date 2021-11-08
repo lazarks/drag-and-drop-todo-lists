@@ -1,5 +1,5 @@
-@import url("css/buttons.css");
-@import url("css/popup.css");
+@import url("utils/buttons.css");
+@import url("utils/popup.css");
 * {
     margin: 0;
     padding: 0;
