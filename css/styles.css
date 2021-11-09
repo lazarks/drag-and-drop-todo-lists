@@ -57,8 +57,10 @@ main {
     max-height: 600px;
     overflow: auto;
     padding: 20px;
-    background-color: #ddd;
-    border-radius: 3px;
+    background-color: rgba(91, 161, 241, 0.959);
+    color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px #f3f3f380;
     -webkit-transition: 0.3s linear;
     -o-transition: 0.3s linear;
     transition: 0.3s linear;
@@ -84,13 +86,15 @@ main {
 }
 
 .card {
-    background-color: var(--white);
-    box-shadow: 2px 2px 5px var(--gray);
+    background-color: rgba(253, 253, 253, 0.918);
+    color: var(--black);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px var(--black);
     padding: 20px;
     margin-top: 20px;
 
     font-size: 0.9em;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
@@ -105,7 +109,7 @@ main {
 
 .card:hover {
     transform: scale(1.05);
-    box-shadow: 2px 2px 5px var(--gray);
+    box-shadow: 0px 0px 10px #e0e0e07a;
 }
 
 .card .title {
@@ -115,7 +119,7 @@ main {
 }
 
 .card.dragging {
-    opacity: 0.5;
+    opacity: 0.8;
     background-color: rgba(85, 85, 85, 0.45);
 }
 
