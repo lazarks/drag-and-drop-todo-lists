@@ -7,7 +7,7 @@ function initCardEvents() {
 }
 
 function addCardEvents(card) {
-    card.addEventListener("dragstart", () => {
+    card.addEventListener("dragstart", (e) => {
         card.classList.add("dragging");
         if (card) {
             console.log(

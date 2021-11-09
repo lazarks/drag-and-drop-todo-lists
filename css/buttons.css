@@ -5,15 +5,17 @@ main button {
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
 }
 
-i {
+main i {
     pointer-events: none;
 }
 
 .addTaskButton {
-    color: #555;
+    color: var(--gray);
 }
 
 .card-buttons {
@@ -26,13 +28,54 @@ i {
 }
 
 .deleteButton i {
-    color: rgb(212, 62, 2);
+    color: var(--error);
 }
 
 .editButton i {
-    color: rgb(255, 168, 37);
+    color: var(--edit);
 }
 
-button:hover {
+main button:hover {
     transform: scale(1.5);
+}
+
+/* POPUP BUTTONS */
+.popup-buttons {
+    padding: 20px;
+    text-align: right;
+}
+
+.popup-buttons > button {
+    margin-left: 20px;
+    border: none;
+    background: transparent;
+    color: var(--black);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.popup-buttons button span {
+    display: block;
+}
+
+#close {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.popup-buttons #cancel:hover,
+#close:hover {
+    color: var(--error);
+}
+
+.popup-buttons #save:hover {
+    color: var(--edit);
 }

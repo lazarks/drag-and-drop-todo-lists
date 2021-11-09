@@ -16,6 +16,8 @@ popup.addEventListener("keydown", (e) => {
 popup.addEventListener("click", (e) => {
     if (e.target.getAttribute("id") == "close") {
         popup.querySelector("#cancel").click();
+    } else if (!popup.querySelector(".popup-form").contains(e.target)) {
+        popup.querySelector("#cancel").click();
     }
 });
 
@@ -24,7 +26,7 @@ function togglePopup() {
     popup.classList.toggle("active");
     if (popup.classList.contains("active")) {
         // focus on first input field
-        popup.querySelector("#titleInput").focus();
+        titleInput.focus();
     }
 }
 
@@ -35,11 +37,11 @@ function addCard(list) {
     togglePopup();
 
     popup.addEventListener("click", function createCardHandler(event) {
-        if (event.target.innerText === "save") {
+        if (event.target.getAttribute("id") === "save") {
             let error = checkTitle(titleInput.value);
             if (error.length > 0) {
                 titleErrors.innerText = error;
-                titleErrors.focus();
+                titleInput.focus();
             } else {
                 // create card element
                 let card = document.createElement("div");
@@ -66,7 +68,7 @@ function addCard(list) {
 
                 save();
             }
-        } else if (event.target.innerText === "cancel") {
+        } else if (event.target.getAttribute("id") === "cancel") {
             togglePopup();
             popup.querySelector(".titleErrors").innerText = "";
             popup.removeEventListener("click", createCardHandler); // prevent step skipping
@@ -80,7 +82,7 @@ function editCard(card) {
     togglePopup();
 
     popup.addEventListener("click", function editCardHandler(event) {
-        if (event.target.innerText === "save") {
+        if (event.target.getAttribute("id") === "save") {
             let error = checkTitle(titleInput.value);
             if (error.length > 0) {
                 titleErrors.innerText = error;
@@ -101,7 +103,7 @@ function editCard(card) {
 
                 save();
             }
-        } else if (event.target.innerText === "cancel") {
+        } else if (event.target.getAttribute("id") === "cancel") {
             togglePopup();
             titleErrors.innerText = "";
             popup.removeEventListener("click", editCardHandler); // prevent step skipping

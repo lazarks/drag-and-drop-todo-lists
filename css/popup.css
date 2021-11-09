@@ -57,7 +57,7 @@
     -ms-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
+    background: linear-gradient(90deg, var(--gray), var(--gray)) center bottom/0 0.15em no-repeat,
         linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
         linear-gradient(90deg, var(--white), var(--white)) left bottom/100% no-repeat;
     transition: background-size 0.3s ease;
@@ -85,6 +85,7 @@
     line-height: 100%;
     transform: translateY(-50%);
     color: var(--gray);
+    cursor: text;
 
     font-size: 16px;
     -webkit-transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
@@ -109,29 +110,4 @@
 .titleErrors {
     color: var(--error);
     padding: 5px 0 0 5px;
-}
-
-.popup-buttons {
-    padding: 20px;
-    text-align: right;
-}
-
-.popup-buttons > button {
-    margin-left: 20px;
-    border: none;
-    background: transparent;
-    color: var(--black);
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#close {
-    border: none;
-    background: transparent;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-weight: bold;
-    font-size: 24px;
 }
