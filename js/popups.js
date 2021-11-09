@@ -14,9 +14,10 @@ popup.addEventListener("keydown", (e) => {
     }
 });
 popup.addEventListener("click", (e) => {
-    if (e.target.getAttribute("id") == "close") {
+    if (e.target.getAttribute("id") == "close" || e.target.innerText == "close") {
         popup.querySelector("#cancel").click();
-    } else if (!popup.querySelector(".popup-form").contains(e.target)) {
+    }
+    if (!popup.querySelector(".popup-form").contains(e.target)) {
         popup.querySelector("#cancel").click();
     }
 });
@@ -28,6 +29,7 @@ function togglePopup() {
         // focus on first input field
         titleInput.focus();
     }
+    console.log("popup toggle");
 }
 
 function addCard(list) {
@@ -37,11 +39,13 @@ function addCard(list) {
     togglePopup();
 
     popup.addEventListener("click", function createCardHandler(event) {
-        if (event.target.getAttribute("id") === "save") {
+        if (event.target.getAttribute("id") == "save" || event.target.innerText == "save") {
             let error = checkTitle(titleInput.value);
             if (error.length > 0) {
                 titleErrors.innerText = error;
                 titleInput.focus();
+
+                console.log("Title not valid: " + error);
             } else {
                 // create card element
                 let card = document.createElement("div");
@@ -68,7 +72,7 @@ function addCard(list) {
 
                 save();
             }
-        } else if (event.target.getAttribute("id") === "cancel") {
+        } else if (event.target.getAttribute("id") == "cancel" || event.target.innerText == "cancel") {
             togglePopup();
             popup.querySelector(".titleErrors").innerText = "";
             popup.removeEventListener("click", createCardHandler); // prevent step skipping
@@ -82,11 +86,13 @@ function editCard(card) {
     togglePopup();
 
     popup.addEventListener("click", function editCardHandler(event) {
-        if (event.target.getAttribute("id") === "save") {
+        if (event.target.getAttribute("id") == "save" || event.target.innerText == "save") {
             let error = checkTitle(titleInput.value);
             if (error.length > 0) {
                 titleErrors.innerText = error;
                 titleErrors.focus();
+
+                console.log("Title not valid: " + error);
             } else {
                 // input fields
                 let newTitle = popup.querySelector("#titleInput").value;
@@ -103,7 +109,7 @@ function editCard(card) {
 
                 save();
             }
-        } else if (event.target.getAttribute("id") === "cancel") {
+        } else if (event.target.getAttribute("id") == "cancel" || event.target.innerText == "cancel") {
             togglePopup();
             titleErrors.innerText = "";
             popup.removeEventListener("click", editCardHandler); // prevent step skipping
