@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--black-transparent);
+    background-color: var(--dark-transparent);
 
     display: -webkit-box;
     display: -ms-flexbox;
@@ -29,6 +29,7 @@
 
 .popup-form {
     background-color: var(--white);
+    border-radius: 5px;
     width: 500px;
     height: fit-content;
     display: -webkit-box;
@@ -109,5 +110,5 @@
 
 .titleErrors {
     color: var(--error);
-    padding: 5px 0 0 5px;
+    padding: 5px 0;
 }
