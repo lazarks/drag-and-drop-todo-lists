@@ -4,13 +4,23 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #2c2c2c80;
+    background-color: var(--black-transparent);
+
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s linear;
+    -o-transition: opacity 0.6s linear;
+    transition: opacity 0.6s linear;
 }
 .popup.active {
     visibility: visible;
@@ -18,17 +28,19 @@
 }
 
 .popup-form {
-    background-color: #fafafa;
+    background-color: var(--white);
     width: 500px;
     height: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     font-size: 16px;
     padding: 20px 30px 0;
     position: relative;
-}
-.popup form {
-    background-color: blue;
 }
 
 .input-field {
@@ -36,7 +48,6 @@
     font-size: 14px;
     margin-top: 20px;
     margin-bottom: 5px;
-    --field-padding: 12px;
     width: fit-content;
 }
 
@@ -48,7 +59,7 @@
     appearance: none;
     background: linear-gradient(90deg, #222, #222) center bottom/0 0.15em no-repeat,
         linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
-        linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+        linear-gradient(90deg, var(--white), var(--white)) left bottom/100% no-repeat;
     transition: background-size 0.3s ease;
     padding: var(--field-padding);
     border-radius: 0;
@@ -73,9 +84,12 @@
     top: 22px;
     line-height: 100%;
     transform: translateY(-50%);
-    color: #808080;
-    transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    color: var(--gray);
+
     font-size: 16px;
+    -webkit-transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    -o-transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
 }
 
 .input-field input.dirty + .placeholder,
@@ -83,7 +97,7 @@
 .input-field input:not(:placeholder-shown) + .placeholder {
     top: -10px;
     font-size: 14px;
-    color: #222;
+    color: var(--black);
 }
 
 .input-field input.dirty,
@@ -93,7 +107,7 @@
 }
 
 .titleErrors {
-    color: red;
+    color: var(--error);
     padding: 5px 0 0 5px;
 }
 
@@ -106,7 +120,7 @@
     margin-left: 20px;
     border: none;
     background: transparent;
-    color: #333;
+    color: var(--black);
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
@@ -121,8 +135,3 @@
     font-weight: bold;
     font-size: 24px;
 }
-
-/* #create.hidden,
-#save.hidden {
-    display: none;
-} */

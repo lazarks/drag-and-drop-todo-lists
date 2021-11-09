@@ -1,0 +1,8 @@
+:root {
+    --white: #f3f3f3;
+    --gray: #555;
+    --black: #222;
+    --black-transparent: #2c2c2cad;
+    --error: #ee1717;
+    --field-padding: 12px;
+}
