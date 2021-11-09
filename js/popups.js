@@ -2,6 +2,7 @@
 let popup = document.querySelector(".popup");
 let titleInput = popup.querySelector("#titleInput");
 let descriptionInput = popup.querySelector("#descriptionInput");
+let titleErrors = popup.querySelector(".titleErrors");
 
 // save on `enter`, close on `escape` or x-button on top right
 popup.addEventListener("keydown", (e) => {
@@ -35,11 +36,16 @@ function addCard(list) {
 
     popup.addEventListener("click", function createCardHandler(event) {
         if (event.target.innerText === "save") {
-            // create card element
-            let card = document.createElement("div");
-            card.classList.add("card");
-            card.draggable = true;
-            card.innerHTML = `
+            let error = checkTitle(titleInput.value);
+            if (error.length > 0) {
+                titleErrors.innerText = error;
+                titleErrors.focus();
+            } else {
+                // create card element
+                let card = document.createElement("div");
+                card.classList.add("card");
+                card.draggable = true;
+                card.innerHTML = `
                 <div class="title">${titleInput.value}</div>
                 <div class="description">${descriptionInput.value}</div>
                 <div class="card-buttons">
@@ -50,17 +56,19 @@ function addCard(list) {
                         <i class="material-icons">delete</i>
                     </button>
                 </div>`;
-            // add card to it's list
-            list.appendChild(card);
-            initCardEvents();
-            togglePopup();
+                // add card to it's list
+                list.appendChild(card);
+                initCardEvents();
+                togglePopup();
 
-            console.log(`created card: ${titleInput.value}, in list: ${list.querySelector("h1").innerText}`);
-            popup.removeEventListener("click", createCardHandler);
+                console.log(`created card: ${titleInput.value}, in list: ${list.querySelector("h1").innerText}`);
+                popup.removeEventListener("click", createCardHandler);
 
-            save();
+                save();
+            }
         } else if (event.target.innerText === "cancel") {
             togglePopup();
+            popup.querySelector(".titleErrors").innerText = "";
             popup.removeEventListener("click", createCardHandler); // prevent step skipping
         }
     });
@@ -73,23 +81,40 @@ function editCard(card) {
 
     popup.addEventListener("click", function editCardHandler(event) {
         if (event.target.innerText === "save") {
-            // input fields
-            let newTitle = popup.querySelector("#titleInput").value;
-            let newDescription = popup.querySelector("#descriptionInput").value;
-            // change card data
-            card.querySelector(".title").innerText = newTitle;
-            card.querySelector(".description").innerText = newDescription;
+            let error = checkTitle(titleInput.value);
+            if (error.length > 0) {
+                titleErrors.innerText = error;
+                titleErrors.focus();
+            } else {
+                // input fields
+                let newTitle = popup.querySelector("#titleInput").value;
+                let newDescription = popup.querySelector("#descriptionInput").value;
+                // change card data
+                card.querySelector(".title").innerText = newTitle;
+                card.querySelector(".description").innerText = newDescription;
 
-            initCardEvents(); // test if needed
-            togglePopup();
+                initCardEvents(); // test if needed
+                togglePopup();
 
-            console.log(`edited card: ${newTitle}`);
-            popup.removeEventListener("click", editCardHandler);
+                console.log(`edited card: ${newTitle}`);
+                popup.removeEventListener("click", editCardHandler);
 
-            save();
+                save();
+            }
         } else if (event.target.innerText === "cancel") {
             togglePopup();
+            titleErrors.innerText = "";
             popup.removeEventListener("click", editCardHandler); // prevent step skipping
         }
     });
+}
+
+function checkTitle(title) {
+    let errorMessage = "";
+    if (title == null || title === "") {
+        errorMessage = "Title is required!";
+    } else if (title.length < 3) {
+        errorMessage = "Title must have at least 3 characters!";
+    }
+    return errorMessage;
 }
