@@ -1,6 +1,7 @@
 @import url("variables.css");
 @import url("popup.css");
 @import url("buttons.css");
+
 * {
     margin: 0;
     padding: 0;
@@ -84,6 +85,23 @@ main {
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
+}
+
+/* list scrollbar */
+.list::-webkit-scrollbar {
+    width: 10px;
+}
+.list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+    border-radius: var(--border-radius);
+    background: var(--white);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(91, 161, 241, 0.959);
 }
 
 .card {
