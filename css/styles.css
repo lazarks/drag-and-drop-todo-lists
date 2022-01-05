@@ -17,6 +17,7 @@ body {
 .container {
     width: 90%;
     margin: 0 auto;
+    max-width: 2000px;
 }
 
 header {
@@ -59,7 +60,7 @@ main {
     padding: 20px;
     background-color: rgba(91, 161, 241, 0.959);
     color: var(--white);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     box-shadow: 0px 0px 8px #f3f3f380;
     -webkit-transition: 0.3s linear;
     -o-transition: 0.3s linear;
@@ -88,7 +89,7 @@ main {
 .card {
     background-color: rgba(253, 253, 253, 0.918);
     color: var(--black);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     box-shadow: 2px 2px 5px var(--black);
     padding: 20px;
     margin-top: 20px;

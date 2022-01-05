@@ -2,7 +2,7 @@ main button {
     background: transparent;
     max-height: 37px;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     padding: 5px;
     cursor: pointer;
     -webkit-transition: 0.3s;
