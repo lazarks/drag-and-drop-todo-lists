@@ -112,12 +112,6 @@ main {
     padding: 20px;
     margin-top: 20px;
 
-    font-size: 0.9em;
-    white-space: normal;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
@@ -132,9 +126,16 @@ main {
 }
 
 .card .title {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.card .description {
+    font-size: 0.9rem;
+    white-space: normal;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .card.dragging {
