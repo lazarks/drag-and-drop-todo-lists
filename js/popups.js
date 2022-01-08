@@ -13,7 +13,8 @@ popup.addEventListener("keydown", (e) => {
         popup.querySelector("#cancel").click();
     }
 });
-popup.addEventListener("click", (e) => {
+popup.addEventListener("mousedown", (e) => {
+    console.log(e);
     if (e.target.getAttribute("id") == "close" || e.target.innerText == "close") {
         popup.querySelector("#cancel").click();
     }
